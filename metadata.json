@@ -1,0 +1,8 @@
+
+{
+  "name": "BizTrack",
+  "description": "your business organized - A robust, mobile-first business management tool designed specifically for SMEs.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
