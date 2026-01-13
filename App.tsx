@@ -53,6 +53,13 @@ const App: React.FC = () => {
     setView('DASHBOARD');
   };
 
+  const handleDeleteTransaction = (id: string) => {
+    if (confirm("Are you sure you want to permanently delete this record?")) {
+      dbService.deleteTransaction(id);
+      refreshData();
+    }
+  };
+
   const handleProductUpdate = (p: Product) => {
     dbService.saveProduct(p);
     refreshData();
@@ -96,6 +103,9 @@ const App: React.FC = () => {
             Check Status Again
           </button>
         </div>
+        <div className="fixed bottom-6 text-blue-300 text-xs font-bold uppercase tracking-widest">
+          Powered by NexDigital
+        </div>
       </div>
     );
   }
@@ -124,7 +134,12 @@ const App: React.FC = () => {
           onDelete={(id) => { dbService.deleteProduct(id); refreshData(); }}
         />;
       case 'REPORTS':
-        return <Reports transactions={transactions} products={products} user={user} />;
+        return <Reports 
+          transactions={transactions} 
+          products={products} 
+          user={user} 
+          onDeleteTransaction={handleDeleteTransaction}
+        />;
       case 'STAFF':
         return <StaffManagement currentUser={user} />;
       default:
@@ -153,8 +168,13 @@ const App: React.FC = () => {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 p-4 md:p-8 max-w-5xl mx-auto w-full pb-24 md:pb-8 overflow-y-auto no-scrollbar">
-        {renderContent()}
+      <main className="flex-1 p-4 md:p-8 max-w-5xl mx-auto w-full pb-24 md:pb-8 overflow-y-auto no-scrollbar flex flex-col">
+        <div className="flex-1">
+          {renderContent()}
+        </div>
+        <footer className="text-center py-8 text-[10px] text-gray-300 font-black uppercase tracking-widest mt-8">
+          Powered by NexDigital
+        </footer>
       </main>
 
       {/* Mobile Bottom Nav */}

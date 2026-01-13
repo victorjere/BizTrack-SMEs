@@ -76,8 +76,8 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ onLogin }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-blue-600 flex items-center justify-center p-6">
-      <div className="bg-white w-full max-w-md rounded-3xl shadow-2xl p-8 max-h-[90vh] overflow-y-auto">
+    <div className="min-h-screen bg-blue-600 flex items-center justify-center p-6 flex-col">
+      <div className="bg-white w-full max-w-md rounded-3xl shadow-2xl p-8 max-h-[85vh] overflow-y-auto no-scrollbar">
         <div className="text-center mb-6">
           <h1 className="text-4xl font-black text-blue-600 tracking-tight">BizTrack</h1>
           <p className="text-gray-500 font-medium mt-1 italic">your business organized</p>
@@ -278,6 +278,9 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ onLogin }) => {
             </button>
           </form>
         )}
+      </div>
+      <div className="mt-6 text-center">
+        <p className="text-[10px] text-blue-200 font-bold uppercase tracking-widest">Powered by NexDigital</p>
       </div>
     </div>
   );

@@ -65,6 +65,12 @@ export const dbService = {
     }
   },
 
+  deleteTransaction: (id: string) => {
+    const all = getFromStorage<Transaction[]>(STORAGE_KEYS.TRANSACTIONS, []);
+    const filtered = all.filter(t => t.id !== id);
+    saveToStorage(STORAGE_KEYS.TRANSACTIONS, filtered);
+  },
+
   // User Management
   getUser: (): User | null => getFromStorage(STORAGE_KEYS.SESSION_USER, null),
   
